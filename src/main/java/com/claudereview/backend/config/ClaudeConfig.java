@@ -22,17 +22,7 @@ public record ClaudeConfig(
 
     @PostConstruct
     public void validate() {
-        System.out.println("=== ClaudeConfig DIAGNOSTIC ===");
-        System.out.println("baseUrl: " + baseUrl);
-        System.out.println("version: " + version);
-        System.out.println("model: " + model);
-        System.out.println("apiKey is null: " + (apiKey == null));
-        System.out.println("apiKey is blank: " + (apiKey != null && apiKey.isBlank()));
-        System.out.println("apiKey length: " + (apiKey == null ? "N/A" : String.valueOf(apiKey.length())));
-        System.out.println("apiKey first 8 chars: " + (apiKey == null || apiKey.length() < 8 ? "N/A" : apiKey.substring(0, 8)));
-        System.out.println("=== END DIAGNOSTIC ===");
-
-        if (apiKey == null || apiKey.isBlank()) {
+                if (apiKey == null || apiKey.isBlank()) {
             throw new IllegalStateException(
                     "claude.api.key is missing or empty. Check secrets.properties."
             );
