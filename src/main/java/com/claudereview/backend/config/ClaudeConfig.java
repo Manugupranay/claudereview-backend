@@ -22,9 +22,11 @@ public record ClaudeConfig(
 
     @PostConstruct
     public void validate() {
-                if (apiKey == null || apiKey.isBlank()) {
+        if (apiKey == null || apiKey.isBlank()) {
             throw new IllegalStateException(
-                    "claude.api.key is missing or empty. Check secrets.properties."
+                    "claude.api.api-key is missing or empty. Set it in the "
+                            + "environment as CLAUDE_API_API_KEY, or in a local "
+                            + "application properties file."
             );
         }
         if (baseUrl == null || baseUrl.isBlank()) {

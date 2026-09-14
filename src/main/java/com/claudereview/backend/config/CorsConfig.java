@@ -24,7 +24,8 @@ public class CorsConfig implements WebMvcConfigurer {
 
     private final String[] allowedOrigins;
 
-    public CorsConfig(@Value("${claude.cors.allowed-origins}") String allowedOrigins) {
+    public CorsConfig(
+            @Value("${claude.cors.allowed-origins:http://localhost:5173}") String allowedOrigins) {
         this.allowedOrigins = allowedOrigins.split(",");
         for (int i = 0; i < this.allowedOrigins.length; i++) {
             this.allowedOrigins[i] = this.allowedOrigins[i].trim();
